@@ -21,6 +21,16 @@ body{
         transform: rotate(360deg);
     }
 }
+.bg-or{
+    background-color: #f55d3f;
+    color: white;
+}
+.hover-cursor:hover{
+    cursor: pointer;
+}
+.hover-op:hover{
+    opacity: 0.9;
+}
 .hover-zoom:hover{
     transform: scale(1.03);
     cursor: pointer;

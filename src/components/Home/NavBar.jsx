@@ -1,20 +1,17 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutStart, logoutSuccess} from "../redux/authSlice";
+import { logoutStart, logoutSuccess} from "../../redux/authSlice";
 import axios from "axios";
-import { baseUrl } from "../redux/apiRequest";
-import logo from "../img/logo192.png"
-import avatar from '../img/avatar.png'
+import { baseUrl } from "../../redux/apiRequest";
+import logo from "../../img/logo192.png"
+import avatar from '../../img/avatar.png'
 import { BsSearch } from 'react-icons/bs'
 import { BiMenu } from 'react-icons/bi'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 
 const NavBar = (props) => {
-  const navigate = useNavigate()
   const { openProfile, setOpenProfile, filter, setFilter } = props
   const user = useSelector((state) => state.auth.login?.currentUser)
   const token = user?.token
@@ -78,11 +75,6 @@ const NavBar = (props) => {
         <button className="border border-0 px-3 d-none d-sm-block"><BsSearch /></button>
       </div>
       <div className="d-flex ms-1 position-relative">
-        <div className="me-4 d-sm-block d-none">
-          <Link to={"/cart"}>
-            <AiOutlineShoppingCart style={{ height: '100%', width: '30px' }} />
-          </Link>
-        </div>
         <div onClick={(e) => { e.stopPropagation(); setOpenProfile(!openProfile) }}>
           <img style={{ width: '40px' }} className="border rounded-circle me-sm-2 me-lg-4" src={avatar} alt="" />
         </div>
@@ -91,7 +83,7 @@ const NavBar = (props) => {
             <div style={{ width: '9rem' }} onClick={(e) => e.stopPropagation()} className="rounded-1 p-3 z-3 d-flex flex-column position-absolute bg-white shadow-lg end-0 top-100">
               {user.role === 'ADMIN' ? <Link to={"/admin"} className="text-decoration-none fs-6 pb-1">Trang quản trị</Link> : <></>}
               <Link className="text-decoration-none fs-6 pb-1 d-sm-none">Giỏ hàng</Link>
-              <Link className="text-decoration-none fs-6 pb-1">Lịch sử mua</Link>
+              <Link to={"/history"} className="text-decoration-none fs-6 pb-1">Lịch sử mua</Link>
               <Link onClick={handleSubmit} className="text-decoration-none fs-6 ">Đăng xuất</Link>
             </div> : <></>
         }

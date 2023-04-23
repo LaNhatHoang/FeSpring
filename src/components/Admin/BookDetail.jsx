@@ -22,7 +22,7 @@ const BookDetail = (props) => {
     const [numberPage, setNumberPage] = useState(bookDetail.numberPage)
     const [category, setCategory] = useState(bookDetail.category)
     const [image, setImage] = useState(`${baseUrl}/api/v1/file/${bookDetail.urlImage}`)
-    const [file, setFile] = useState()
+    const [file, setFile] = useState(null)
 
     // console.log(bookDetail);
 
@@ -34,7 +34,7 @@ const BookDetail = (props) => {
         setNumberPage("")
         setCategory("")
         setImage("")
-        setFile()
+        setFile(null)
     }
 
     const onImageChange = (event) => {

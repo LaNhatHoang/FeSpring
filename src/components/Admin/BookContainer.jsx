@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import avatar from '../../img/avatar.png'
 import { useState, useEffect } from 'react'
-import TableBook from './RawBook'
+import RawBook from './RawBook'
 import { confirmAlert } from "react-confirm-alert";
 import axios from "axios";
 import { baseUrl } from "../../redux/apiRequest";
@@ -92,7 +92,7 @@ const BookContainer = (props) => {
                 </div>
             </div>
             <div className='Body d-flex mt-5 mx-5'>
-                <div style={{ height: '2000px' }} className='mt-5 w-100 bg-white'>
+                <div style={{minHeight: '1000px'}} className='mt-5 w-100 bg-white'>
                     <div className='Table d-flex flex-column'>
                         <div className='d-flex px-3 pt-3'>
                             <div className='col-3 border d-flex justify-content-center align-items-center'>
@@ -119,7 +119,7 @@ const BookContainer = (props) => {
                         </div>
                         {
                             listBook.map((book, index) => (
-                                <TableBook 
+                                <RawBook 
                                     key={index} book={book} 
                                     setOpenBookDetail={setOpenBookDetail} 
                                     setBookDetail={setBookDetail} 

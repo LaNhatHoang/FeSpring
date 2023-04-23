@@ -1,4 +1,4 @@
-import { baseUrl } from '../redux/apiRequest'
+import { baseUrl } from '../../redux/apiRequest'
 
 const ItemBook = (props) => {
     const {id, name, author, urlImage, setBookId, setScrollY} = props 

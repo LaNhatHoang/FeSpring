@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Pagination from "./Pagination";
 import Footer from "./Footer";
 import axios from "axios";
-import { baseUrl } from "../redux/apiRequest";
+import { baseUrl } from "../../redux/apiRequest";
 import Book from "./Book";
 
 const Home = () => {
@@ -71,7 +71,7 @@ const Home = () => {
         <Pagination data={data} dataPerPage={dataPerPage} setItemOffset={setItemOffset} />
         <Footer />
       </div>
-      {bookId !== 0 ? <Book scrollY={scrollY} setBookId={setBookId} /> : <></>}
+      {bookId !== 0 ? <Book scrollY={scrollY} bookId={bookId} setBookId={setBookId} /> : <></>}
     </div>
   );
 };

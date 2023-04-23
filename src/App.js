@@ -1,13 +1,10 @@
 
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import Home from './components/Home'
+import Home from './components/Home/Home'
 import Login from "./components/Login";
-import Register from "./components/Register";
 import { useSelector } from 'react-redux';
-import Book from "./components/Book";
-import Cart from "./components/Cart";
 import Admin from "./components/Admin/Admin";
-import { useState } from "react";
+import History from "./components/History/History";
 
 function App() {
   const user = useSelector((state)=>state.auth.login?.currentUser)
@@ -16,8 +13,8 @@ function App() {
       <div className="App h-100 bg-body-secondary"> 
         <Routes>
           <Route path="/" element={ user ? <Home/> : <Login />} />
-          <Route path="/cart" element={ <Cart/> } />
           <Route path="/admin" element={ <Admin/> } />
+          <Route path="/history" element={ <History/>} />
         </Routes>
       </div>
     </Router>
