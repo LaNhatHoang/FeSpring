@@ -38,6 +38,7 @@ const BookDetail = (props) => {
     }
 
     const onImageChange = (event) => {
+        console.log(event.target.files[0]);
         if (event.target.files && event.target.files[0]) {
             setImage(URL.createObjectURL(event.target.files[0]));
             setFile(event.target.files[0])
@@ -282,7 +283,7 @@ const BookDetail = (props) => {
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
-                pauseOnFocusLoss
+                pauseOnFocusLoss={false}
                 draggable
                 pauseOnHover={false}
                 theme="light"

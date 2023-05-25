@@ -48,3 +48,15 @@ body{
 .bg-op{
     background-color: rgba(0, 0, 0, 0.3);
 }
+.text-line-2{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.text-line-1{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}

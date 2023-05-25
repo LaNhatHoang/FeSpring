@@ -4,19 +4,19 @@ import { baseUrl } from "../../redux/apiRequest";
 import { useSelector } from "react-redux";
 
 const ItemHistory = (props) => {
-    const { data, toast,render, setRender } = props
-    const user = useSelector((state)=>state.auth.login.currentUser)
+    const { data, toast, render, setRender, setDetailHistory, setDetailBook } = props
+    const user = useSelector((state) => state.auth.login.currentUser)
 
-    const apiDelete = async (id)=>{
-        const res = await axios.post(`${baseUrl}/api/v1/order/delete/${id}`,{},{
-            headers:{
+    const apiDelete = async (id) => {
+        const res = await axios.post(`${baseUrl}/api/v1/order/delete/${id}`, {}, {
+            headers: {
                 Authorization: `Bearer ${user.token}`
             }
         })
-        if(res.data.status){
+        if (res.data.status) {
             toast.success(res.data.message)
         }
-        else{
+        else {
             toast.error(res.data.message)
         }
         setRender(!render)
@@ -49,27 +49,24 @@ const ItemHistory = (props) => {
 
     return (
         <div className='d-flex px-3'>
-            <div className='col-3 border d-flex justify-content-center align-items-center'>
-                <div className='my-2'>{data.book.name}</div>
+            <div className='col-4 border d-flex justify-content-center align-items-center'>
+                <div className='m-2'>{data.book.name}</div>
             </div>
             <div className='col-2 border d-flex justify-content-center align-items-center'>
                 <div>{data.book.author}</div>
             </div>
-            <div className='col-1 border d-flex justify-content-center align-items-center'>
-                <div>{data.book.category}</div>
-            </div>
             <div className='col-2 border d-flex justify-content-center align-items-center'>
-                <div>{new Date(data.book.releaseDate).toLocaleDateString()}</div>
-            </div>
-            <div className='col-1 border d-flex justify-content-center align-items-center'>
                 <div>{data.quantity}</div>
             </div>
             <div className='col-2 border d-flex justify-content-center align-items-center'>
                 <div>{new Date(data.timeOrder).toLocaleString()}</div>
             </div>
-            <div className='col-1 border d-flex justify-content-center align-items-center'>
+            <div className='col-2 border d-flex justify-content-center align-items-center'>
                 <div>
-                    <button onClick={()=>handleConfirmDelete(data.id)} className="border rounded-2 px-2 py-1 my-2 bg-danger">Hủy mua</button>
+                    <button onClick={()=>{setDetailHistory(true); setDetailBook(data)}} className="border rounded-2 px-2 py-1 my-2 me-4 bg-info">Chi tiết</button>
+                </div>
+                <div>
+                    <button onClick={() => handleConfirmDelete(data.id)} className="border rounded-2 px-2 py-1 my-2 bg-danger">Hủy mua</button>
                 </div>
             </div>
         </div>

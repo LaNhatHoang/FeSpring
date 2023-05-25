@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Register = (props) => {
     const { openRegister, setOpenRegister } = props
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [matchPassword, setMatchPassword] = useState("")
@@ -15,11 +16,27 @@ const Register = (props) => {
 
     const handleRegister = async (e) => {
         e.preventDefault()
+        if(name===""){
+            toast.error("Vui lòng không để trống Họ và tên")
+            return
+        }if(email ===""){
+            toast.error("Vui lòng không để trống Email")
+            return
+        }
+        if(password ===""){
+            toast.error("Vui lòng không để trống Mật khẩu")
+            return
+        }
+        if(matchPassword ===""){
+            toast.error("Vui lòng không để trống Nhập lại mật khẩu")
+            return
+        }
         if (password !== matchPassword) {
-            toast.error("Password is not matches")
+            toast.error("Mật khẩu nhập lại không khớp với mật khẩu")
             return
         }
         const newUser = {
+            name: name,
             email: email,
             password: password
         }
@@ -43,25 +60,35 @@ const Register = (props) => {
         <div className=" d-flex justify-content-center">
             <div className="mt-5">
                 <div style={{ width: '300px' }} className="border rounded-4 mt-5  bg-white shadow-lg  d-flex flex-column align-items-center">
-                    <div className="p-2 fs-5 fw-medium">Sign up</div>
+                    <div className="p-2 fs-5 fw-medium">Đăng ký</div>
                     <form className="w-100 px-4 d-flex flex-column justify-content-start"
                         onSubmit={handleRegister}>
+                        <label className="py-1 fs-6">Họ và tên</label>
+                        <input className="px-2 py-1 mb-2 fs-6 border rounded-1"
+                            type="text" 
+                            placeholder="Nhập họ và tên của bạn"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
                         <label className="py-1 fs-6">Email</label>
-                        <input className="px-2 py-1 mb-3 fs-6 border rounded-1"
-                            type="text" required
-                            placeholder="Enter your username"
+                        <input className="px-2 py-1 mb-2 fs-6 border rounded-1"
+                            type="email" 
+                            placeholder="Nhập email của bạn"
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <label className="py-1 fs-6">Password</label>
-                        <input className="px-2 py-1 mb-3 fs-6 border rounded-1"
-                            type="password" required
-                            placeholder="Enter your password"
+                        <label className="py-1 fs-6">Mật khẩu</label>
+                        <input className="px-2 py-1 mb-2 fs-6 border rounded-1"
+                            type="password" 
+                            placeholder="Nhập mật khẩu"
+                            value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <label className="py-1 fs-6">Matches Password</label>
+                        <label className="py-1 fs-6">Nhập lại mật khẩu</label>
                         <input className="px-2 py-1 mb-3 fs-6 border rounded-1"
-                            type="password" required
-                            placeholder="Enter your password"
+                            type="password" 
+                            placeholder="Nhập lại mật khẩu"
+                            value={matchPassword}
                             onChange={(e) => setMatchPassword(e.target.value)}
                         />
                         <div className="my-2 d-flex justify-content-center">
@@ -76,7 +103,7 @@ const Register = (props) => {
                                 newestOnTop={false}
                                 closeOnClick
                                 rtl={false}
-                                pauseOnFocusLoss
+                                pauseOnFocusLoss={false}
                                 draggable
                                 pauseOnHover={false}
                                 theme="light"

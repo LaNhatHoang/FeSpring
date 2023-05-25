@@ -19,6 +19,7 @@ const Home = () => {
   const [bookId, setBookId] = useState(0)
   const [scrollY, setScrollY] = useState(0)
 
+
   const calcDataPerPage = (width) => {
     if (width > 1400) {
       return 18

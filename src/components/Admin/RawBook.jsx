@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { confirmAlert } from "react-confirm-alert";
 import axios from "axios";
 import { baseUrl } from "../../redux/apiRequest";

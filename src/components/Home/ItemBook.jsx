@@ -14,8 +14,8 @@ const ItemBook = (props) => {
             <div onClick={handleClick} className='hover-zoom bg-white d-flex flex-column justify-content-end w-100 m-2 border'>
                 <img className='w-100' src={`${baseUrl}/api/v1/file/${urlImage}`} alt="" />
                 <div className='p-2'>
-                    <div className='name text-break fs-6 fw-semibold'>{name}</div>
-                    <div className='author fs-6 fst-italic'>{author}</div>
+                    <div style={{minHeight: '48px'}} className='name text-break fs-6 fw-semibold text-line-2'>{name}</div>
+                    <div className='author fs-6 fst-italic text-line-1'>{author}</div>
                 </div>
             </div>
         </div>

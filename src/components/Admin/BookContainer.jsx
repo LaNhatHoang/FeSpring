@@ -1,7 +1,7 @@
 import { AiOutlineHome } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import avatar from '../../img/avatar.png'
+import avatar from '../../img/OIP.jpg'
 import { useState, useEffect } from 'react'
 import RawBook from './RawBook'
 import { confirmAlert } from "react-confirm-alert";
@@ -140,7 +140,7 @@ const BookContainer = (props) => {
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}
-                pauseOnFocusLoss
+                pauseOnFocusLoss={false}
                 draggable
                 pauseOnHover={false}
                 theme="light"

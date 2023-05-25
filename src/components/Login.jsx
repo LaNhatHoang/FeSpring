@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Register from "./Register";
 
-const Login = (props) => {
+const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [openRegister, setOpenRegister] = useState(false)
@@ -15,6 +15,14 @@ const Login = (props) => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
+        if(username===""){
+            toast.error("Vui lòng không để trống Email")
+            return
+        }
+        if(password===""){
+            toast.error("Vui lòng không để trống Mật khẩu")
+            return
+        }
         const newUser = {
             email: username,
             password: password
@@ -51,21 +59,21 @@ const Login = (props) => {
                             onSubmit={handleLogin}>
                             <label className="py-1 fs-6">Email</label>
                             <input className="px-2 py-1 mb-3 fs-6 border rounded-1"
-                                type="text" required
+                                type="text" requred
                                 placeholder="Enter your username"
                                 onChange={(e) => setUsername(e.target.value)}
                             />
-                            <label className="py-1 fs-6">Password</label>
+                            <label className="py-1 fs-6">Mật khẩu </label>
                             <input className="px-2 py-1 mb-3 fs-6 border rounded-1"
-                                type="password" required
+                                type="password" 
                                 placeholder="Enter your password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             <div className="my-2 d-flex justify-content-center">
                                 <button 
-                                    className="border border-0 px-3 py-1 rounded-2 bg-primary text-light fs-6" 
+                                    className="border border-0 px-2 py-1 rounded-2 bg-primary text-light fs-6" 
                                     type="submit" 
-                                > Login </button>
+                                > Đăng nhập </button>
                                 <ToastContainer
                                     position="top-right"
                                     autoClose={1000}
@@ -73,17 +81,17 @@ const Login = (props) => {
                                     newestOnTop={false}
                                     closeOnClick
                                     rtl={false}
-                                    pauseOnFocusLoss
+                                    pauseOnFocusLoss={false}
                                     draggable
                                     pauseOnHover
                                     theme="light"
                                 />
                             </div>
                         </form>
-                        <div className="my-2 fs-6"> If you haven't account </div>
+                        <div className="my-2 fs-6"> Nếu bạn chưa có tài khoản </div>
                         <button
                             className="mb-4 border px-2 py-1 rounded-1 bg-success text-light fs-6"
-                            onClick={() => setOpenRegister(!openRegister)}>Create account
+                            onClick={() => setOpenRegister(!openRegister)}>Tạo tài khoản
                         </button>
                     </div>
                 </div>

@@ -133,8 +133,8 @@ const Book = (props) => {
                     <div className="col-sm-8 flex-fill col-xl-9 mt-sm-2 mt-xl-5 d-sm-flex flex-sm-column d-md-flex bg-white">
                         <div className="mt-2 h-75 d-flex flex-column bg-white">
                             <div className="my-2 mx-2 mt-sm-4 mx-sm-4 mt-md-5 mb-sm-0">
-                                <div style={{ fontSize: '1.2rem' }} className="lh-sm fw-medium">Những chú cừu vui vẻ và con sói ranh mãnh </div>
-                                <div className="fs-6 fst-italic my-2">Tác giả: {book.name}</div>
+                                <div style={{ fontSize: '1.2rem' }} className="lh-sm fw-medium">{book.name}</div>
+                                <div className="fs-6 fst-italic my-2">Tác giả: {book.author}</div>
                                 <div >Ngày phát hành: {new Date(book.releaseDate).toLocaleDateString()}</div>
                                 <div >Thể loại: {book.category}</div>
                                 <div >Số trang: {book.numberPage}</div>
@@ -174,7 +174,7 @@ const Book = (props) => {
                                         newestOnTop={false}
                                         closeOnClick
                                         rtl={false}
-                                        pauseOnFocusLoss
+                                        pauseOnFocusLoss={false}
                                         draggable
                                         pauseOnHover
                                         theme="light"

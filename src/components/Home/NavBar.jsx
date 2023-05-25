@@ -4,7 +4,7 @@ import { logoutStart, logoutSuccess} from "../../redux/authSlice";
 import axios from "axios";
 import { baseUrl } from "../../redux/apiRequest";
 import logo from "../../img/logo192.png"
-import avatar from '../../img/avatar.png'
+import avatar from '../../img/OIP.jpg'
 import { BsSearch } from 'react-icons/bs'
 import { BiMenu } from 'react-icons/bi'
 import { confirmAlert } from "react-confirm-alert";
